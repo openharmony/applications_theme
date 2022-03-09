@@ -1,0 +1,13 @@
+{
+    "name": "ohosproject",
+    "version": "1.0.0",
+    "ohos": {
+      "org": "huawei",
+      "buildTool": "hvigor",
+      "directoryLevel": "project"
+    },
+    "dependencies": {
+      "@ohos/hvigor": "0.0.1",
+      "@ohos/hvigor-ohos-plugin": "0.0.1"
+    }
+}
