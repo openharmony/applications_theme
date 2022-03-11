@@ -1,39 +1,32 @@
-# Settings<a name="EN-US_TOPIC_0000001103554544"></a>
+# Theme
 
--   [Introduction](#section11660541593)
-    -   [Architecture](#section48896451454)
+## Introduction
 
--   [Directory Structure](#section161941989596)
--   [Repositories Involved](#section1371113476307)
+**Overall introduction**
 
-## Introduction<a name="section11660541593"></a>
-The Wallpaper is a system application prebuilt in OpenHarmony. It provides a basic ability for users to set system wallpaper, and support change wallpaer by other applications.
+The Theme is a system application prebuilt in OpenHarmony. It provides a basic ability for users to set system themes and desktop wallpaper, and it support change system themes and desktop wallpaer by other applications.
 
-### Architecture<a name="section48896451454"></a>
-
-![](figures/en-us_image_0000001153225717.png)
-
-## Directory Structure<a name="section161941989596"></a>
+## Directory Structure
 
 ```
-/applications/standard/settings
-├── entry             # main entry module
+/applications/standard/theme
+├── entry                         # main entry module
 │   └── src
-│       ├── main
-│           ├── ets               # ets module
-│           └────── ├── pages     # pages folder
-│                   ├── resources # other common resources
-│           ├── resources         # default resources
-│           |   └── base          # basic language picutre and etc resources
-|           |       ├── element
-|           |       ├── media
-|           |       └── profile
-│           └── module.json5      # global config
+│       └── main
+│           ├── ets               # ets module folder
+│           ├────── ├── pages     # pages folder
+│           |       ├── resources # other common resources
+│           ├── resources         # resources folder
+│           |   └── base          # default resources
+|           |       ├── element   # default language resources
+|           |       ├── media     # default piture resources
+|           |       └── profile   # default configs
+│           └── module.json5      # global configs
 └── LICENSE                       # copyright license file
 ```
 
-## Repositories Involved<a name="section1371113476307"></a>
+## Repositories Involved
 
 System apps
 
-**applications\_settings**
+**applications\_theme**
