@@ -13,37 +13,51 @@
  * limitations under the License.
  */
 
+import Extension from '@ohos.application.WallpaperExtension'
+import wallPaper from '@ohos.app.wallpaperability'
+
 const MODULE_TAG = 'ExtWallpaper : ';
 
-export class WallpaperProxy {
-  private static instance: WallpaperProxy;
-  pixelMapCallBack = null;
-
-  private constructor() {
-    console.info(MODULE_TAG + "proxy initialized");
-  };
-
-  public static getInstance() {
-    if (!this.instance) {
-      console.info(MODULE_TAG + "proxy get fresh new");
-      this.instance = new WallpaperProxy();
+export default class WallpaperExtAbility extends Extension {
+    onCreated(want) {
+        console.info(MODULE_TAG + 'ability on created start');
+        super.setUiContent("pages/index");
+        this.initWallpaperImage();
+        console.info(MODULE_TAG + 'ability on created end');
     }
-    console.info(MODULE_TAG + "proxy get old one");
-    return this.instance;
-  }
 
-  public registerCallback(callback) {
-    console.info(MODULE_TAG + "proxy register callback type is : " + typeof callback);
-    this.pixelMapCallBack = callback;
-  }
+    onWallpaperChanged(wallpaperType) {
+        console.info(MODULE_TAG + 'ability on wallpaper changed start, type is : ' + wallpaperType);
+        if (wallPaper) {
+            this.sendPixelMapData();
+        }
+        console.info(MODULE_TAG + 'ability on wallpaper changed end');
+    }
 
-  public executeCallback(data) {
-    console.info(MODULE_TAG + "proxy execute callback start, data is : " + JSON.stringify(data));
-    console.info(MODULE_TAG + "proxy execute callback type is : " + typeof this.pixelMapCallBack);
-    this.pixelMapCallBack(data);
-    console.info(MODULE_TAG + "proxy execute callback end");
-  }
-}
+    onDestroy() {
+        console.info(MODULE_TAG + 'ability on destroy');
+    }
 
-let wallpaperProxyInstance = WallpaperProxy.getInstance();
-export default wallpaperProxyInstance;
+    initWallpaperImage() {
+        console.info(MODULE_TAG + 'ability init wallpaper image start');
+        if (!wallPaper) {
+            console.info(MODULE_TAG + 'ability init wallpaper image failed as wallpaper is null');
+            return;
+        }
+        this.sendPixelMapData();
+        console.info(MODULE_TAG + 'ability init wallpaper image end');
+    }
+
+    sendPixelMapData() {
+        wallPaper.getPixelMap(0, (err, data) => {
+           console.info(MODULE_TAG + 'ability get pixel map data start');
+            if (err) {
+                console.info(MODULE_TAG + 'ability get pixel map failed, error : ' + JSON.stringify(err));
+            } else {
+                console.info(MODULE_TAG + 'ability get pixel map, data : ' + JSON.stringify(data));
+                AppStorage.SetOrCreate('slPixelData', data);
+            }
+            console.info(MODULE_TAG + 'ability get pixel map data end');
+        });
+    }
+};

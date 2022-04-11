@@ -13,27 +13,35 @@
  * limitations under the License.
  */
 
-const MODULE_TAG = 'ExtWallpaper : ';
-let changeCount = 0;
+import router from '@ohos.router';
 
 @Entry
 @Component
-struct Index {
-  @StorageLink('slPixelData') pixelData: any = [];
-
-  build() {
-    Flex({direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center}) {
-      Image(this.pixelData);
+struct Second {
+  @State message: string = 'Second Page'
+build() {
+  Row() {
+    Column() {
+      Text(this.message)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+      Button() {
+        Text('back to index')
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+      }.type(ButtonType.Capsule)
+      .margin({
+        top: 20
+      })
+      .backgroundColor('#0D9FFB')
+      .width('35%')
+      .height('5%')
+      .onClick(()=>{
+        router.back()
+      })
     }
     .width('100%')
-    .height('100%');
   }
-
-  aboutToAppear() {
-    console.info(MODULE_TAG + 'index page about to  appear');
-  }
-
-  onPageShow() {
-    console.info(MODULE_TAG + 'index page show');
-  }
+  .height('100%')
+}
 }
