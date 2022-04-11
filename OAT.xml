@@ -54,10 +54,14 @@
             </policy>
         </policylist>
 		<filefilterlist>
-			<filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies"> 
+			<filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
                <filteritem type="filepath" name="AppScope/resources/base/media/.*.png" desc="self developed image"/>
 			   <filteritem type="filepath" name="entry/src/main/resources/base/media/.*.png" desc="self developed image"/>
 			   <filteritem type="filepath" name="figures/.*.png" desc="self developed image"/>
+               <filteritem type="filepath" name=".*.json5" desc="build config file"/>
+               <filteritem type="filepath" name="AppScope/.*.json5" desc="build config file"/>
+               <filteritem type="filepath" name="entry/.*.json5" desc="build config file"/>
+               <filteritem type="filepath" name="entry/src/main/.*.json5" desc="build config file"/>
 			</filefilter>
 		</filefilterlist>
     </oatconfig>
