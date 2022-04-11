@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "entry_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "WallpaperExtAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "WallpaperExtAbility_label",
+      "value": "label"
+    }
+  ]
+}

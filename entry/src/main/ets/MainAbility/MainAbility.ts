@@ -15,41 +15,33 @@
 
 import Ability from '@ohos.application.Ability'
 
-const MODULE_TAG = 'ExtWallpaper : ';
-
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
-        console.info(MODULE_TAG + "onCreate");
+        console.log("ExtWallpaper: MainAbility onCreate")
+        globalThis.abilityWant = want;
     }
 
     onDestroy() {
-        console.info(MODULE_TAG + "onDestroy");
+        console.log("ExtWallpaper: MainAbility onDestroy")
     }
 
     onWindowStageCreate(windowStage) {
-        console.info(MODULE_TAG + "onWindowStageCreate");
-        console.info(MODULE_TAG + "startWallpaperExtAbility begin");
-        var want = {
-            "bundleName": "com.test.testApp",
-            "abilityName": "com.test.testApp.WallpaperExtAbility",
-        }
-        this.context.startAbility(want).then((data) => {
-            console.info(MODULE_TAG + "startAbility success:" + JSON.stringify(data));
-        }).catch((error) => {
-            console.error(MODULE_TAG + "startAbility failed:" + JSON.stringify(error));
-        })
-        console.info(MODULE_TAG + "startWallpaperExtAbility end");
+        // Main window is created, set main page for this ability
+        console.log("ExtWallpaper: MainAbility onWindowStageCreate")
     }
 
     onWindowStageDestroy() {
-        console.info(MODULE_TAG + "onWindowStageDestroy");
+        // Main window is destroyed, release UI related resources
+        console.log("ExtWallpaper: MainAbility onWindowStageDestroy")
     }
 
     onForeground() {
-        console.info(MODULE_TAG + "onForeground");
+        // Ability has brought to foreground
+        console.log("ExtWallpaper: MainAbility onForeground")
     }
 
     onBackground() {
-        console.info(MODULE_TAG + "onBackground");
+        // Ability has back to background
+        console.log("ExtWallpaper: MainAbility onBackground")
     }
-}
+};
