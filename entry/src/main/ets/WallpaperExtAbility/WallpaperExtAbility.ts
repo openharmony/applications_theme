@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,15 +50,13 @@ export default class WallpaperExtAbility extends Extension {
     }
 
     sendPixelMapData() {
+        console.info(MODULE_TAG + 'ability send pixel map data start');
         wallPaper.getPixelMap(0, (err, data) => {
-           console.info(MODULE_TAG + 'ability get pixel map data start');
-            if (err) {
-                console.info(MODULE_TAG + 'ability get pixel map failed, error : ' + JSON.stringify(err));
-            } else {
-                console.info(MODULE_TAG + 'ability get pixel map, data : ' + JSON.stringify(data));
-                AppStorage.SetOrCreate('slPixelData', data);
-            }
-            console.info(MODULE_TAG + 'ability get pixel map data end');
+            console.info(MODULE_TAG + 'ability get pixel map, err: ' + JSON.stringify(err) +
+                " data: " + JSON.stringify(data));
+            AppStorage.SetOrCreate('slPixelData', data);
+            console.info(MODULE_TAG + 'ability set or create end');
         });
+        console.info(MODULE_TAG + 'ability send pixel map data end');
     }
 };
