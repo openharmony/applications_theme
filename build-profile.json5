@@ -1,6 +1,5 @@
 {
   "app": {
-    "signingConfigs": [],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
     "products": [
@@ -12,16 +11,28 @@
   },
   "modules": [
     {
-      "name": "entry",
-      "srcPath": "./entry",
+      "name": "phone-wallpaper",
+      "srcPath": "./product/phone",
       "targets": [
         {
           "name": "default",
           "applyToProducts": [
-            "default",
-          ],
-        },
-      ],
+            "default"
+          ]
+        }
+      ]
     },
+    {
+      "name": "pad-wallpaper",
+      "srcPath": "./product/pad",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
   ],
 }
