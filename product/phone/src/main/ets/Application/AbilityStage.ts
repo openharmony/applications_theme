@@ -13,27 +13,10 @@
  * limitations under the License.
  */
 
-const MODULE_TAG = 'ExtWallpaper : ';
-let changeCount = 0;
+import AbilityStage from "@ohos.application.AbilityStage"
 
-@Entry
-@Component
-struct Index {
-  @StorageLink('slPixelData') pixelData: any = [];
-
-  build() {
-    Flex({direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center}) {
-      Image(this.pixelData);
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("ExtWallpaper: MyAbilityStage onCreate")
     }
-    .width('100%')
-    .height('100%');
-  }
-
-  aboutToAppear() {
-    console.info(MODULE_TAG + 'index page about to  appear');
-  }
-
-  onPageShow() {
-    console.info(MODULE_TAG + 'index page show');
-  }
 }
