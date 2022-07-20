@@ -22,9 +22,6 @@ struct Index {
 
   build() {
     Flex({direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center}) {
-      Text("Hello Wallpaper")
-        .fontSize("40vp")
-        .fontColor(Color.Green)
       Image(this.pixelData);
     }
     .width('100%')
