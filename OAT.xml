@@ -59,6 +59,7 @@
                 <filteritem type="filepath" name="AppScope/.*.json5" desc="build config file"/>
                 <filteritem type="filepath" name="entry/.*.json5" desc="build config file"/>
                 <filteritem type="filepath" name="entry/src/main/.*.json5" desc="build config file"/>
+                <filteritem type="filename" name="hvigorfile.js" desc=".js not need check"/>
             </filefilter>
             <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
                 <filteritem type="filepath" name="AppScope/resources/base/media/.*.png" desc="self developed image"/>
